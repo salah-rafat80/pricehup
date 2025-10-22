@@ -13,10 +13,11 @@ class OtpScreen extends ConsumerStatefulWidget {
 }
 
 class _OtpScreenState extends ConsumerState<OtpScreen> {
-  final List<TextEditingController> _controllers =
-      List.generate(6, (_) => TextEditingController());
-  final List<FocusNode> _focusNodes =
-      List.generate(6, (_) => FocusNode());
+  final List<TextEditingController> _controllers = List.generate(
+    6,
+    (_) => TextEditingController(),
+  );
+  final List<FocusNode> _focusNodes = List.generate(6, (_) => FocusNode());
 
   @override
   void dispose() {
@@ -48,13 +49,21 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     final authState = ref.watch(authViewModelProvider);
-    final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
 
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('تأكيد الكود'),
+
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
         body: SafeArea(
           child: LayoutBuilder(
@@ -62,9 +71,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
               return SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: constraints.maxHeight,
-                  ),
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
                   child: IntrinsicHeight(
                     child: Padding(
                       padding: EdgeInsets.all(SizeConfig.w(6)),
@@ -72,12 +79,20 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Icon(
-                            Icons.message,
-                            size: isLandscape ? SizeConfig.w(15) : SizeConfig.w(20),
-                            color: const Color(0xFFD4AF37),
+                          Image(
+                            image: const AssetImage(
+                              'assets/Image (FAP Logo).png',
+                            ),
                           ),
-                          SizedBox(height: isLandscape ? SizeConfig.h(2) : SizeConfig.h(3)),
+                          Text(
+                            'رمز التحقق',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: SizeConfig.sp(12),
+                              color: const Color(0xFFE81923),
+                            ),
+                          ),
+                          SizedBox(height: SizeConfig.h(1)),
                           Text(
                             'تم إرسال الكود إلى رقمك على واتساب',
                             textAlign: TextAlign.center,
@@ -86,14 +101,16 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          SizedBox(height: isLandscape ? SizeConfig.h(3) : SizeConfig.h(5)),
+                          SizedBox(height: SizeConfig.h(1)),
                           Wrap(
                             alignment: WrapAlignment.center,
                             spacing: SizeConfig.w(2),
                             runSpacing: SizeConfig.h(1.5),
                             children: List.generate(6, (index) {
                               return Container(
-                                width: isLandscape ? SizeConfig.w(10) : SizeConfig.w(12),
+                                width: isLandscape
+                                    ? SizeConfig.w(10)
+                                    : SizeConfig.w(12),
                                 constraints: const BoxConstraints(
                                   maxWidth: 65,
                                   minWidth: 45,
@@ -111,7 +128,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                                   decoration: InputDecoration(
                                     counterText: '',
                                     contentPadding: EdgeInsets.symmetric(
-                                      vertical: SizeConfig.h(2),
+                                      vertical: SizeConfig.h(1.3),
                                     ),
                                   ),
                                   onChanged: (value) {
@@ -140,10 +157,16 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                               ),
                             ),
                           ],
-                          SizedBox(height: isLandscape ? SizeConfig.h(2) : SizeConfig.h(4)),
+                          SizedBox(
+                            height: isLandscape
+                                ? SizeConfig.h(2)
+                                : SizeConfig.h(4),
+                          ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.symmetric(vertical: SizeConfig.h(2)),
+                              padding: EdgeInsets.symmetric(
+                                vertical: SizeConfig.h(0.5),
+                              ),
                             ),
                             onPressed: authState.isLoading ? null : _verifyOtp,
                             child: authState.isLoading
@@ -157,7 +180,9 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                                   )
                                 : Text(
                                     'تأكيد',
-                                    style: TextStyle(fontSize: SizeConfig.sp(10)),
+                                    style: TextStyle(
+                                      fontSize: SizeConfig.sp(10),
+                                    ),
                                   ),
                           ),
                         ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// App color constants
-const Color kPrimaryColor = Color(0xFFD4AF37); // Soft gold
+const Color kPrimaryColor = Color(0xFFE81923); // Soft gold
 const Color kSecondaryColor = Color(0xFF2E2E2E); // Dark gray
-const Color kBackgroundColor = Color(0xFFFAF9F6); // Ivory
+const Color kBackgroundColor = Colors.white; // Ivory
 
 /// Centralized app theme following Material 3 design
 ThemeData getAppTheme(BuildContext context) {
@@ -35,7 +35,7 @@ ThemeData getAppTheme(BuildContext context) {
       ),
       titleTextStyle: TextStyle(
         color: kSecondaryColor,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w500,
         fontSize: getTextSize(22),
         fontFamily: 'Cairo',
       ),
@@ -59,8 +59,8 @@ ThemeData getAppTheme(BuildContext context) {
         horizontal: screenWidth * 0.04,
         vertical: screenWidth * 0.03,
       ),
-      labelStyle: TextStyle(fontSize: getTextSize(16)),
-      hintStyle: TextStyle(fontSize: getTextSize(16)),
+      labelStyle: TextStyle(fontSize: getTextSize(16), fontWeight: FontWeight.w500),
+      hintStyle: TextStyle(fontSize: getTextSize(16), fontWeight: FontWeight.w500),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -72,7 +72,7 @@ ThemeData getAppTheme(BuildContext context) {
         ),
         textStyle: TextStyle(
           fontFamily: 'Cairo',
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w500,
           fontSize: getTextSize(18),
         ),
         elevation: 2,
@@ -87,30 +87,30 @@ ThemeData getAppTheme(BuildContext context) {
     ),
     textTheme: TextTheme(
       displayLarge: TextStyle(
-          fontSize: getTextSize(32), fontWeight: FontWeight.bold),
+          fontSize: getTextSize(32), fontWeight: FontWeight.w500),
       displayMedium: TextStyle(
-          fontSize: getTextSize(28), fontWeight: FontWeight.bold),
+          fontSize: getTextSize(28), fontWeight: FontWeight.w500),
       displaySmall: TextStyle(
-          fontSize: getTextSize(24), fontWeight: FontWeight.bold),
+          fontSize: getTextSize(24), fontWeight: FontWeight.w500),
       headlineLarge: TextStyle(
-          fontSize: getTextSize(22), fontWeight: FontWeight.bold),
+          fontSize: getTextSize(22), fontWeight: FontWeight.w500),
       headlineMedium: TextStyle(
-          fontSize: getTextSize(20), fontWeight: FontWeight.w600),
+          fontSize: getTextSize(20), fontWeight: FontWeight.w500),
       headlineSmall: TextStyle(
-          fontSize: getTextSize(18), fontWeight: FontWeight.w600),
+          fontSize: getTextSize(18), fontWeight: FontWeight.w500),
       titleLarge: TextStyle(
           fontSize: getTextSize(18), fontWeight: FontWeight.w500),
       titleMedium: TextStyle(
           fontSize: getTextSize(16), fontWeight: FontWeight.w500),
       titleSmall: TextStyle(
           fontSize: getTextSize(14), fontWeight: FontWeight.w500),
-      bodyLarge: TextStyle(fontSize: getTextSize(16)),
-      bodyMedium: TextStyle(fontSize: getTextSize(14)),
-      bodySmall: TextStyle(fontSize: getTextSize(12)),
+      bodyLarge: TextStyle(fontSize: getTextSize(16), fontWeight: FontWeight.w500),
+      bodyMedium: TextStyle(fontSize: getTextSize(14), fontWeight: FontWeight.w500),
+      bodySmall: TextStyle(fontSize: getTextSize(12), fontWeight: FontWeight.w500),
       labelLarge: TextStyle(
-          fontSize: getTextSize(16), fontWeight: FontWeight.bold),
-      labelMedium: TextStyle(fontSize: getTextSize(14)),
-      labelSmall: TextStyle(fontSize: getTextSize(12)),
+          fontSize: getTextSize(16), fontWeight: FontWeight.w500),
+      labelMedium: TextStyle(fontSize: getTextSize(14), fontWeight: FontWeight.w500),
+      labelSmall: TextStyle(fontSize: getTextSize(12), fontWeight: FontWeight.w500),
     ),
   );
 }
@@ -134,7 +134,7 @@ final ThemeData appTheme = ThemeData(
     iconTheme: IconThemeData(color: kSecondaryColor),
     titleTextStyle: TextStyle(
       color: kSecondaryColor,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w500,
       fontSize: 22,
       fontFamily: 'Cairo',
     ),
@@ -160,13 +160,13 @@ final ThemeData appTheme = ThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: kPrimaryColor,
       foregroundColor: Colors.white,
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
       textStyle: const TextStyle(
         fontFamily: 'Cairo',
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w500,
         fontSize: 18,
       ),
       elevation: 2,

@@ -155,7 +155,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
                                 SizedBox(height: SizeConfig.h(2)),
                                 Text(
                                   'جاري تحميل الملف...',
-                                  style: TextStyle(fontSize: SizeConfig.sp(4.5)),
+                                  style: TextStyle(fontSize: SizeConfig.sp(8)),
                                 ),
                               ],
                             ),

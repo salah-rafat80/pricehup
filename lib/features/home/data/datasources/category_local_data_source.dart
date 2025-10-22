@@ -19,27 +19,27 @@ class CategoryLocalDataSourceImpl implements CategoryLocalDataSource {
     return const [
       Category(
         id: '1',
-        name: 'الكترونيات',
+        name: 'كشف شهر مايو 2025',
         pdfAssetPath: pdfUrl,
       ),
       Category(
         id: '2',
-        name: 'أثاث',
+        name: 'كشف شهر إبريل 2025',
         pdfAssetPath: pdfUrl,
       ),
       Category(
         id: '3',
-        name: 'ملابس',
+        name: 'كشف شهر مارس 2025',
         pdfAssetPath: pdfUrl,
       ),
       Category(
         id: '4',
-        name: 'أدوات منزلية',
+        name: 'كشف شهر يناير 2025',
         pdfAssetPath: pdfUrl,
       ),
       Category(
         id: '5',
-        name: 'رياضة',
+        name: 'كشف شهر يناير 2025',
         pdfAssetPath: pdfUrl,
       ),
     ];

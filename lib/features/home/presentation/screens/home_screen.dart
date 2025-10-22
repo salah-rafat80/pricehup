@@ -14,79 +14,147 @@ class HomeScreen extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(title: const Text('الصفحة الرئيسية')),
-        body: SafeArea(
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: constraints.maxHeight,
+        appBar: AppBar(
+          leading: Stack(
+            children: [
+              Center(
+                child: IconButton(
+                  icon: const Icon(Icons.notifications_outlined),
+                  onPressed: () {
+                    // TODO: Navigate to notifications
+                  },
+                ),
+              ),
+              Positioned(
+                right: 8,
+                top: 8,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
                   ),
-                  child: IntrinsicHeight(
-                    child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(SizeConfig.w(6)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.home,
-                              size: isLandscape ? SizeConfig.w(18) : SizeConfig.w(25),
-                              color: const Color(0xFFD4AF37),
-                            ),
-                            SizedBox(height: isLandscape ? SizeConfig.h(2) : SizeConfig.h(3)),
-                            Text(
-                              'مرحباً بك في PriceHup',
-                              style: TextStyle(
-                                fontSize: SizeConfig.sp(10),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: SizeConfig.h(2)),
-                            Text(
-                              'تطبيقك المفضل لعرض قوائم الأسعار',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: SizeConfig.sp(10),
-                                color: Colors.grey,
-                              ),
-                            ),
-                            SizedBox(height: isLandscape ? SizeConfig.h(4) : SizeConfig.h(6)),
-                            SizedBox(
-                              width: isLandscape ? constraints.maxWidth * 0.5 : double.infinity,
-                              child: ElevatedButton.icon(
-                                style: ElevatedButton.styleFrom(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: SizeConfig.h(2.5),
-                                    horizontal: SizeConfig.w(4),
-                                  ),
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => const PriceListScreen(),
-                                    ),
-                                  );
-                                },
-                                icon: Icon(Icons.list_alt, size: SizeConfig.w(6)),
-                                label: Text(
-                                  'قائمة الأسعار',
-                                  style: TextStyle(fontSize: SizeConfig.sp(10)),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                  constraints: const BoxConstraints(
+                    minWidth: 18,
+                    minHeight: 18,
+                  ),
+                  child: const Text(
+                    '2',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          title: Image.asset(
+            'assets/Image (FAP Logo).png',
+            height: 40,
+            fit: BoxFit.contain,
+          ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.person_outline),
+              onPressed: () {
+                // TODO: Navigate to profile
+              },
+            ),
+          ],
+        ),
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(SizeConfig.w(4)),
+                  child: Text(
+                    'الإجراءات السريعة',
+                    style: TextStyle(
+                      fontSize: SizeConfig.sp(9),
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey[600],
                     ),
                   ),
                 ),
-              );
-            },
+                SizedBox(height: SizeConfig.h(2)),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: SizeConfig.w(4)),
+                  child: Column(
+                    children: [
+                      _buildMenuItem(
+                        context: context,
+                        title: 'عروض الاسعار',
+                        icon: Icons.description_outlined,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const PriceListScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      SizedBox(height: SizeConfig.h(2)),
+                      _buildMenuItem(
+                        context: context,
+                        title: 'طلباتي ومواقيتي',
+                        icon: Icons.description_outlined,
+                        onTap: () {
+                          // TODO: Navigate to orders and appointments
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMenuItem({
+    required BuildContext context,
+    required String title,
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        padding: EdgeInsets.all(SizeConfig.w(4)),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.grey[300]!),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              size: SizeConfig.w(8),
+              color: Colors.grey[700],
+            ),
+            Expanded(
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: SizeConfig.sp(9),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            SizedBox(width: SizeConfig.w(8)),
+          ],
         ),
       ),
     );

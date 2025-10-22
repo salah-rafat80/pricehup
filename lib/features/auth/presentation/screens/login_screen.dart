@@ -26,7 +26,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     SizeConfig.init(context);
     final authState = ref.watch(authViewModelProvider);
     final authViewModel = ref.read(authViewModelProvider.notifier);
-    final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
 
     // Listen to OTP sent state
     ref.listen(authViewModelProvider, (previous, next) {
@@ -38,27 +39,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       }
 
       if (next.error != null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(next.error!)),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(next.error!)));
       }
     });
 
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('تسجيل الدخول'),
-        ),
         body: SafeArea(
           child: LayoutBuilder(
             builder: (context, constraints) {
               return SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: constraints.maxHeight,
-                  ),
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
                   child: IntrinsicHeight(
                     child: Padding(
                       padding: EdgeInsets.all(SizeConfig.w(6)),
@@ -66,18 +62,25 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Icon(
-                            Icons.phone_android,
-                            size: isLandscape ? SizeConfig.w(15) : SizeConfig.w(20),
-                            color: const Color(0xFFD4AF37),
+                          Spacer(),
+                          Image(
+                            image: const AssetImage(
+                              'assets/Image (FAP Logo).png',
+                            ),
                           ),
-                          SizedBox(height: isLandscape ? SizeConfig.h(2) : SizeConfig.h(3)),
+
+                          SizedBox(
+                            height: isLandscape
+                                ? SizeConfig.h(2)
+                                : SizeConfig.h(5),
+                          ),
                           Text(
                             'مرحباً بك',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: SizeConfig.sp(10),
+                              fontSize: SizeConfig.sp(12),
                               fontWeight: FontWeight.bold,
+                              color: const Color(0xFFE81923),
                             ),
                           ),
                           SizedBox(height: SizeConfig.h(1)),
@@ -86,10 +89,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: SizeConfig.sp(8),
-                              color: Colors.grey,
+                              color: Color(0xff4A5565),
                             ),
                           ),
-                          SizedBox(height: isLandscape ? SizeConfig.h(3) : SizeConfig.h(5)),
+                          SizedBox(
+                            height: isLandscape
+                                ? SizeConfig.h(3)
+                                : SizeConfig.h(5),
+                          ),
                           TextField(
                             controller: _mobileController,
                             keyboardType: TextInputType.phone,
@@ -98,34 +105,69 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             decoration: InputDecoration(
                               labelText: 'رقم الجوال',
                               labelStyle: TextStyle(fontSize: SizeConfig.sp(8)),
-                              hintText: '05xxxxxxxx',
-                              hintStyle: TextStyle(fontSize: SizeConfig.sp(8)),
-                              prefixIcon: Icon(Icons.phone, size: SizeConfig.w(6)),
+                              hint: Directionality(
+                                textDirection: TextDirection.ltr,
+                                child: Text(
+                                  '05xxxxxxxx',
+                                  style: TextStyle(
+                                    fontSize: SizeConfig.sp(8),
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ),
+                              suffixIcon: Icon(
+                                Icons.phone,
+                                size: SizeConfig.w(6),
+                              ),
                             ),
                             onChanged: authViewModel.setMobileNumber,
                           ),
                           SizedBox(height: SizeConfig.h(3)),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.symmetric(vertical: SizeConfig.h(2)),
+                              padding: EdgeInsets.symmetric(
+                                vertical: SizeConfig.h(0.5),
+                              ),
                             ),
-                            onPressed: authState.isLoading
-                                ? null
-                                : () => authViewModel.sendOtp(),
-                            child: authState.isLoading
-                                ? SizedBox(
-                                    height: SizeConfig.h(3),
-                                    width: SizeConfig.h(3),
-                                    child: const CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                : Text(
+                            onPressed:
+                            (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (_) => const OtpScreen()),
+                              );
+                            },
+                            // authState.isLoading
+                            //     ? null
+                            //     : () => authViewModel.sendOtp(),
+                            child:
+                            // authState.isLoading
+                            //     ? SizedBox(
+                            //         height: SizeConfig.h(3),
+                            //         width: SizeConfig.h(3),
+                            //         child: const CircularProgressIndicator(
+                            //           strokeWidth: 2,
+                            //           color: Colors.white,
+                            //         ),
+                            //       )
+                            //     :
+                            Text(
                                     'متابعة',
-                                    style: TextStyle(fontSize: SizeConfig.sp(10)),
+                                    style: TextStyle(
+                                      fontSize: SizeConfig.sp(10),
+                                    ),
                                   ),
                           ),
+                          SizedBox(height: SizeConfig.h(2)),
+                          Text(
+                            "سيتم إرسال رمز التحقق عبر الواتساب",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: SizeConfig.sp(6),
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Spacer(),
+                          Spacer(),
                         ],
                       ),
                     ),
