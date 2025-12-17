@@ -1,19 +1,39 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'features/auth/data/datasources/auth_remote_data_source.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'features/auth/data/datasources/auth_remote_datasource.dart';
 import 'features/auth/data/repositories/auth_repository_impl.dart';
 import 'features/auth/domain/repositories/auth_repository.dart';
 import 'features/auth/domain/usecases/login_with_mobile.dart';
 import 'features/auth/domain/usecases/verify_otp.dart';
-import 'features/home/data/datasources/category_local_data_source.dart';
-import 'features/home/data/repositories/category_repository_impl.dart';
-import 'features/home/domain/repositories/category_repository.dart';
-import 'features/home/domain/usecases/get_categories.dart';
+import 'features/auth/presentation/cubit/auth_cubit.dart';
+import 'features/price_list/data/datasources/price_list_remote_data_source.dart';
+import 'features/price_list/data/repositories/category_repository_impl.dart';
+import 'features/price_list/domain/repositories/category_repository.dart';
+import 'features/price_list/domain/usecases/get_categories.dart';
+import 'features/price_list/domain/usecases/get_price_list_details.dart';
+import 'features/price_list/presentation/cubit/price_list_cubit.dart';
+import 'features/price_list/presentation/cubit/price_list_details_cubit.dart';
 
 final sl = GetIt.instance;
 
 /// Initialize all dependencies for the app
 Future<void> init() async {
+  // ============== External ==============
+  final sharedPreferences = await SharedPreferences.getInstance();
+  sl.registerLazySingleton(() => sharedPreferences);
+  sl.registerLazySingleton(() => Dio());
+
   // ============== Features - Auth ==============
+
+  // Cubit
+  sl.registerFactory(
+    () => AuthCubit(
+      loginWithMobile: sl(),
+      verifyOtpUseCase: sl(),
+      sharedPreferences: sl(),
+    ),
+  );
 
   // Use cases
   sl.registerLazySingleton(() => LoginWithMobile(sl()));
@@ -26,22 +46,26 @@ Future<void> init() async {
 
   // Data sources
   sl.registerLazySingleton<AuthRemoteDataSource>(
-    () => AuthRemoteDataSourceImpl(),
+    () => AuthRemoteDataSourceImpl(dio: sl()),
   );
 
-  // ============== Features - Home ==============
+  // ============== Features - Price List ==============
+
+  // Cubit
+  sl.registerFactory(() => PriceListCubit(getCategories: sl()));
+  sl.registerFactory(() => PriceListDetailsCubit(getPriceListDetails: sl()));
 
   // Use cases
   sl.registerLazySingleton(() => GetCategories(sl()));
+  sl.registerLazySingleton(() => GetPriceListDetails(sl()));
 
   // Repository
   sl.registerLazySingleton<CategoryRepository>(
-    () => CategoryRepositoryImpl(localDataSource: sl()),
+    () => CategoryRepositoryImpl(remoteDataSource: sl()),
   );
 
   // Data sources
-  sl.registerLazySingleton<CategoryLocalDataSource>(
-    () => CategoryLocalDataSourceImpl(),
+  sl.registerLazySingleton<PriceListRemoteDataSource>(
+    () => PriceListRemoteDataSourceImpl(dio: sl(), sharedPreferences: sl()),
   );
 }
-

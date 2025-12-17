@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:io';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/constants/app_theme.dart';
 import 'core/utils/security_service.dart';
+import 'features/auth/presentation/cubit/auth_cubit.dart';
 import 'features/auth/presentation/screens/login_screen.dart';
 import 'injection_container.dart' as di;
 
@@ -16,7 +17,7 @@ void main() async {
   }
 
   await di.init();
-  runApp(const ProviderScope(child: PriceHupApp()));
+  runApp(const PriceHupApp());
 }
 
 class PriceHupApp extends StatelessWidget {
@@ -35,17 +36,21 @@ class PriceHupApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      home: const SecureWrapper(child: LoginScreen()),
       builder: (context, child) {
         final mq = MediaQuery.of(context);
-        // احسب معامل التكبير الحالي ثم قم بتقييده ضمن نطاق معقول
         final current = mq.textScaler.scale(1.0);
         final clamped = current.clamp(0.9, 1.3);
-        return MediaQuery(
-          data: mq.copyWith(textScaler: TextScaler.linear(clamped.toDouble())),
-          child: child ?? const SizedBox.shrink(),
+        return MultiBlocProvider(
+          providers: [BlocProvider(create: (_) => di.sl<AuthCubit>())],
+          child: MediaQuery(
+            data: mq.copyWith(
+              textScaler: TextScaler.linear(clamped.toDouble()),
+            ),
+            child: child ?? const SizedBox.shrink(),
+          ),
         );
       },
-      home: const SecureWrapper(child: LoginScreen()),
     );
   }
 }
@@ -59,7 +64,8 @@ class SecureWrapper extends StatefulWidget {
   State<SecureWrapper> createState() => _SecureWrapperState();
 }
 
-class _SecureWrapperState extends State<SecureWrapper> with WidgetsBindingObserver {
+class _SecureWrapperState extends State<SecureWrapper>
+    with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();

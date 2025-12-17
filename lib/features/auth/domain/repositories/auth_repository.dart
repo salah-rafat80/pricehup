@@ -1,10 +1,11 @@
-/// Abstract repository for authentication operations
-/// This defines the contract that the data layer must implement
+import 'package:dartz/dartz.dart';
+import '../../../../core/error/failures.dart';
+import '../../data/models/auth_response_model.dart';
+
 abstract class AuthRepository {
-  /// Send OTP to the provided mobile number
-  Future<void> loginWithMobile(String mobileNumber);
-
-  /// Verify the OTP code for the given mobile number
-  Future<bool> verifyOtp(String mobileNumber, String otp);
+  Future<Either<Failure, AuthResponseModel>> requestOtp(String phoneNumber);
+  Future<Either<Failure, AuthResponseModel>> verifyOtp(
+    String phoneNumber,
+    String otp,
+  );
 }
-

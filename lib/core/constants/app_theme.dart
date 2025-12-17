@@ -15,7 +15,7 @@ ThemeData getAppTheme(BuildContext context) {
   }
 
   return ThemeData(
-    fontFamily: 'Cairo',
+    fontFamily: 'Tajawal',
     primaryColor: kPrimaryColor,
     scaffoldBackgroundColor: kBackgroundColor,
     colorScheme: ColorScheme.fromSeed(
@@ -29,15 +29,12 @@ ThemeData getAppTheme(BuildContext context) {
       backgroundColor: kBackgroundColor,
       elevation: 0,
       centerTitle: true,
-      iconTheme: IconThemeData(
-        color: kSecondaryColor,
-        size: getTextSize(24),
-      ),
+      iconTheme: IconThemeData(color: kSecondaryColor, size: getTextSize(24)),
       titleTextStyle: TextStyle(
         color: kSecondaryColor,
         fontWeight: FontWeight.w500,
         fontSize: getTextSize(22),
-        fontFamily: 'Cairo',
+        fontFamily: 'Tajawal',
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -59,19 +56,23 @@ ThemeData getAppTheme(BuildContext context) {
         horizontal: screenWidth * 0.04,
         vertical: screenWidth * 0.03,
       ),
-      labelStyle: TextStyle(fontSize: getTextSize(16), fontWeight: FontWeight.w500),
-      hintStyle: TextStyle(fontSize: getTextSize(16), fontWeight: FontWeight.w500),
+      labelStyle: TextStyle(
+        fontSize: getTextSize(16),
+        fontWeight: FontWeight.w500,
+      ),
+      hintStyle: TextStyle(
+        fontSize: getTextSize(16),
+        fontWeight: FontWeight.w500,
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: kPrimaryColor,
         foregroundColor: Colors.white,
         padding: EdgeInsets.symmetric(vertical: screenWidth * 0.04),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         textStyle: TextStyle(
-          fontFamily: 'Cairo',
+          fontFamily: 'Tajawal',
           fontWeight: FontWeight.w500,
           fontSize: getTextSize(18),
         ),
@@ -87,37 +88,87 @@ ThemeData getAppTheme(BuildContext context) {
     ),
     textTheme: TextTheme(
       displayLarge: TextStyle(
-          fontSize: getTextSize(32), fontWeight: FontWeight.w500),
+        fontSize: getTextSize(32),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
       displayMedium: TextStyle(
-          fontSize: getTextSize(28), fontWeight: FontWeight.w500),
+        fontSize: getTextSize(28),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
       displaySmall: TextStyle(
-          fontSize: getTextSize(24), fontWeight: FontWeight.w500),
+        fontSize: getTextSize(24),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
       headlineLarge: TextStyle(
-          fontSize: getTextSize(22), fontWeight: FontWeight.w500),
+        fontSize: getTextSize(22),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
       headlineMedium: TextStyle(
-          fontSize: getTextSize(20), fontWeight: FontWeight.w500),
+        fontSize: getTextSize(20),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
       headlineSmall: TextStyle(
-          fontSize: getTextSize(18), fontWeight: FontWeight.w500),
+        fontSize: getTextSize(18),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
       titleLarge: TextStyle(
-          fontSize: getTextSize(18), fontWeight: FontWeight.w500),
+        fontSize: getTextSize(18),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
       titleMedium: TextStyle(
-          fontSize: getTextSize(16), fontWeight: FontWeight.w500),
+        fontSize: getTextSize(16),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
       titleSmall: TextStyle(
-          fontSize: getTextSize(14), fontWeight: FontWeight.w500),
-      bodyLarge: TextStyle(fontSize: getTextSize(16), fontWeight: FontWeight.w500),
-      bodyMedium: TextStyle(fontSize: getTextSize(14), fontWeight: FontWeight.w500),
-      bodySmall: TextStyle(fontSize: getTextSize(12), fontWeight: FontWeight.w500),
+        fontSize: getTextSize(14),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
+      bodyLarge: TextStyle(
+        fontSize: getTextSize(16),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
+      bodyMedium: TextStyle(
+        fontSize: getTextSize(14),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
+      bodySmall: TextStyle(
+        fontSize: getTextSize(12),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
       labelLarge: TextStyle(
-          fontSize: getTextSize(16), fontWeight: FontWeight.w500),
-      labelMedium: TextStyle(fontSize: getTextSize(14), fontWeight: FontWeight.w500),
-      labelSmall: TextStyle(fontSize: getTextSize(12), fontWeight: FontWeight.w500),
+        fontSize: getTextSize(16),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
+      labelMedium: TextStyle(
+        fontSize: getTextSize(14),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
+      labelSmall: TextStyle(
+        fontSize: getTextSize(12),
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Tajawal',
+      ),
     ),
   );
 }
 
 // الثيم الثابت للتوافق مع الكود القديم
 final ThemeData appTheme = ThemeData(
-  fontFamily: 'Cairo',
+  fontFamily: 'Tajawal',
   primaryColor: kPrimaryColor,
   scaffoldBackgroundColor: kBackgroundColor,
   colorScheme: ColorScheme.fromSeed(
@@ -136,7 +187,7 @@ final ThemeData appTheme = ThemeData(
       color: kSecondaryColor,
       fontWeight: FontWeight.w500,
       fontSize: 22,
-      fontFamily: 'Cairo',
+      fontFamily: 'Tajawal',
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
@@ -161,11 +212,9 @@ final ThemeData appTheme = ThemeData(
       backgroundColor: kPrimaryColor,
       foregroundColor: Colors.white,
       padding: const EdgeInsets.symmetric(vertical: 8),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       textStyle: const TextStyle(
-        fontFamily: 'Cairo',
+        fontFamily: 'Tajawal',
         fontWeight: FontWeight.w500,
         fontSize: 18,
       ),
