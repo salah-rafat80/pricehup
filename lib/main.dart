@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/constants/app_theme.dart';
 import 'core/utils/security_service.dart';
 import 'features/auth/presentation/cubit/auth_cubit.dart';
-import 'features/auth/presentation/screens/login_screen.dart';
+import 'features/auth/presentation/screens/login_screen/login_screen.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
