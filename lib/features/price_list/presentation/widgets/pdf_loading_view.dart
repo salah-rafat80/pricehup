@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/size_config.dart';
+import 'package:pricehup/core/utils/size_config.dart';
 
 class PdfLoadingView extends StatelessWidget {
   const PdfLoadingView({super.key});
@@ -29,4 +29,3 @@ class PdfLoadingView extends StatelessWidget {
     );
   }
 }
-

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/size_config.dart';
+import 'package:pricehup/core/utils/size_config.dart';
 
 class PriceListTableHeader extends StatelessWidget {
   const PriceListTableHeader({super.key});
@@ -80,4 +80,3 @@ class PriceListTableHeader extends StatelessWidget {
     );
   }
 }
-

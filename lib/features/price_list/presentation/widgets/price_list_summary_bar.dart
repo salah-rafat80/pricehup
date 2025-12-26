@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/size_config.dart';
+import 'package:pricehup/core/utils/size_config.dart';
 
 class PriceListSummaryBar extends StatelessWidget {
   final int selectedItemsCount;
@@ -49,4 +49,3 @@ class PriceListSummaryBar extends StatelessWidget {
     );
   }
 }
-

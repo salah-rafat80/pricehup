@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'core/constants/app_theme.dart';
-import 'core/utils/security_service.dart';
-import 'features/auth/presentation/cubit/auth_cubit.dart';
-import 'features/auth/presentation/screens/login_screen/login_screen.dart';
-import 'injection_container.dart' as di;
+import 'package:pricehup/core/constants/app_theme.dart';
+import 'package:pricehup/core/utils/security_service.dart';
+import 'package:pricehup/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:pricehup/features/auth/presentation/screens/login_screen/login_screen.dart';
+import 'package:pricehup/injection_container.dart' as di;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

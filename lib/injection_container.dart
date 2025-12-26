@@ -1,19 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'features/auth/data/datasources/auth_remote_datasource.dart';
-import 'features/auth/data/repositories/auth_repository_impl.dart';
-import 'features/auth/domain/repositories/auth_repository.dart';
-import 'features/auth/domain/usecases/login_with_mobile.dart';
-import 'features/auth/domain/usecases/verify_otp.dart';
-import 'features/auth/presentation/cubit/auth_cubit.dart';
-import 'features/price_list/data/datasources/price_list_remote_data_source.dart';
-import 'features/price_list/data/repositories/category_repository_impl.dart';
-import 'features/price_list/domain/repositories/category_repository.dart';
-import 'features/price_list/domain/usecases/get_categories.dart';
-import 'features/price_list/domain/usecases/get_price_list_details.dart';
-import 'features/price_list/presentation/cubit/price_list_cubit.dart';
-import 'features/price_list/presentation/cubit/price_list_details_cubit.dart';
+import 'package:pricehup/features/auth/data/datasources/auth_remote_datasource.dart';
+import 'package:pricehup/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:pricehup/features/auth/domain/repositories/auth_repository.dart';
+import 'package:pricehup/features/auth/domain/usecases/login_with_mobile.dart';
+import 'package:pricehup/features/auth/domain/usecases/verify_otp.dart';
+import 'package:pricehup/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:pricehup/features/price_list/data/datasources/price_list_remote_data_source.dart';
+import 'package:pricehup/features/price_list/data/repositories/category_repository_impl.dart';
+import 'package:pricehup/features/price_list/domain/repositories/category_repository.dart';
+import 'package:pricehup/features/price_list/domain/usecases/get_categories.dart';
+import 'package:pricehup/features/price_list/domain/usecases/get_price_list_details.dart';
+import 'package:pricehup/features/price_list/presentation/cubit/price_list_cubit.dart';
+import 'package:pricehup/features/price_list/presentation/cubit/price_list_details_cubit.dart';
 
 final sl = GetIt.instance;
 

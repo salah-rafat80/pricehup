@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/size_config.dart';
+import 'package:pricehup/core/utils/size_config.dart';
 
 class PriceListDetailsHeader extends StatelessWidget {
   final String title;
@@ -24,10 +24,7 @@ class PriceListDetailsHeader extends StatelessWidget {
         children: [
           Row(
             children: [
-              IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: onBack,
-              ),
+              IconButton(icon: const Icon(Icons.arrow_back), onPressed: onBack),
               Expanded(
                 child: Text(
                   title,
@@ -43,9 +40,7 @@ class PriceListDetailsHeader extends StatelessWidget {
             ],
           ),
           Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.w(4),
-            ),
+            padding: EdgeInsets.symmetric(horizontal: SizeConfig.w(4)),
             height: SizeConfig.h(5),
             decoration: BoxDecoration(
               color: Colors.grey[100],
@@ -71,4 +66,3 @@ class PriceListDetailsHeader extends StatelessWidget {
     );
   }
 }
-

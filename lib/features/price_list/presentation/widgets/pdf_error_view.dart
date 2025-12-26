@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/size_config.dart';
+import 'package:pricehup/core/utils/size_config.dart';
 
 class PdfErrorView extends StatelessWidget {
   final String? errorMessage;
@@ -17,7 +17,8 @@ class PdfErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -110,4 +111,3 @@ class PdfErrorView extends StatelessWidget {
     );
   }
 }
-

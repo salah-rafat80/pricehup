@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/size_config.dart';
+import 'package:pricehup/core/utils/size_config.dart';
 
 class PriceListBottomNotice extends StatelessWidget {
   const PriceListBottomNotice({super.key});
@@ -36,4 +36,3 @@ class PriceListBottomNotice extends StatelessWidget {
     );
   }
 }
-

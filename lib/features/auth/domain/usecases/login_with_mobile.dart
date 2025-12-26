@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import '../../../../core/error/failures.dart';
-import '../../data/models/auth_response_model.dart';
-import '../repositories/auth_repository.dart';
+import 'package:pricehup/core/error/failures.dart';
+import 'package:pricehup/features/auth/data/models/auth_response_model.dart';
+import 'package:pricehup/features/auth/domain/repositories/auth_repository.dart';
 
 /// Use case for initiating login with mobile number
 class LoginWithMobile {

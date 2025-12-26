@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import '../../../../core/error/failures.dart';
-import '../../domain/repositories/auth_repository.dart';
-import '../datasources/auth_remote_datasource.dart';
-import '../models/auth_response_model.dart';
-import '../models/otp_request_model.dart';
-import '../models/verify_otp_request_model.dart';
+import 'package:pricehup/core/error/failures.dart';
+import 'package:pricehup/features/auth/domain/repositories/auth_repository.dart';
+import 'package:pricehup/features/auth/data/datasources/auth_remote_datasource.dart';
+import 'package:pricehup/features/auth/data/models/auth_response_model.dart';
+import 'package:pricehup/features/auth/data/models/otp_request_model.dart';
+import 'package:pricehup/features/auth/data/models/verify_otp_request_model.dart';
 
 import 'package:dio/dio.dart';
 

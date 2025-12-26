@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/size_config.dart';
+import 'package:pricehup/core/utils/size_config.dart';
 
 class PriceListCheckoutButton extends StatelessWidget {
   final double totalPrice;
@@ -19,17 +19,13 @@ class PriceListCheckoutButton extends StatelessWidget {
       right: 0,
       child: Container(
         padding: EdgeInsets.all(SizeConfig.w(4)),
-        decoration: const BoxDecoration(
-          color: Colors.transparent,
-        ),
+        decoration: const BoxDecoration(color: Colors.transparent),
         child: ElevatedButton(
           onPressed: totalPrice > 0 ? onCheckout : null,
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFFE81923),
             foregroundColor: Colors.white,
-            padding: EdgeInsets.symmetric(
-              vertical: SizeConfig.h(1.5),
-            ),
+            padding: EdgeInsets.symmetric(vertical: SizeConfig.h(1.5)),
             elevation: 5,
             shadowColor: Colors.black.withValues(alpha: 0.3),
             shape: RoundedRectangleBorder(
@@ -57,4 +53,3 @@ class PriceListCheckoutButton extends StatelessWidget {
     );
   }
 }
-

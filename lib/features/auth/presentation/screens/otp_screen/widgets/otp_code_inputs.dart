@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:pricehup/core/utils/size_config.dart';
 import 'package:pricehup/features/auth/presentation/cubit/auth_state.dart';
-import 'otp_code_field.dart';
+import 'package:pricehup/features/auth/presentation/screens/otp_screen/widgets/otp_code_field.dart';
 
 class OtpCodeInputs extends StatelessWidget {
   final List<TextEditingController> controllers;
